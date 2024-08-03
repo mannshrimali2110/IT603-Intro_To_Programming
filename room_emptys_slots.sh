@@ -9,7 +9,7 @@ grep ",$room$" timetable.csv | cut -d ',' -f1,2 > occupied_slots.txt
 echo "Room: $room"
 for day in "${days[@]}"; do
   for slot in "${time_slots[@]}"; do
-    if ! grep -q "$day,$slot" occupied_slots.txt; then
+    if ! grep -w -q "$day,$slot" occupied_slots.txt; then
       echo "  $day $slot is empty"
       fi
   done
